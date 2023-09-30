@@ -8,6 +8,10 @@
     color: gold;
     height: 100px;
 }
+.header h1{
+    margin-left: 10%;
+    margin-top: 2%;
+}
 
 .nav-items ul{
     list-style-type: none;
