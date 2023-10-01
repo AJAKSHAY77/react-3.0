@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const Title = () => {
   return (
     <a href="/">
@@ -10,11 +12,10 @@ const Title = () => {
   );
 };
 
-
-
-
 const Header = () => {
-  const title = "Food Villa"
+const[isLoggedin,setisLoggedin]=useState(false)
+
+  const title = "Food Villa";
   return (
     <div className="header">
       <Title />
@@ -28,9 +29,29 @@ const Header = () => {
           <li>Cart</li>
         </ul>
       </div>
+      <>
+        {(isLoggedin) ? (
+          <button
+            className="login-btn"
+            onClick={() => {
+              setisLoggedin(false);
+            }}
+          >
+            Login
+          </button>
+        ) : (
+          <button
+            className="login-btn"
+            onClick={() => {
+              setisLoggedin(true);
+            }}
+          >
+            Logout
+          </button>
+        )}
+      </>
     </div>
   );
 };
 
-export default Header
-
+export default Header;

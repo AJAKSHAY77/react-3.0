@@ -1,14 +1,7 @@
 import { IMG_URL } from "../Config";
 
-const RestaurantCard = ({
-  name,
-  areaName,
-  cuisines,
-  avgRating,
-  cloudinaryImageId,
-}) => {
+const RestaurantCard = ({name,areaName,cuisines,avgRating,cloudinaryImageId}) => {
 
-  
   return (
     <div className="Card">
       <img src={IMG_URL + cloudinaryImageId} alt="cardimg" />
