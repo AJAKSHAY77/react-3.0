@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+
 
 const Title = () => {
   return (
@@ -13,7 +16,7 @@ const Title = () => {
 };
 
 const Header = () => {
-const[isLoggedin,setisLoggedin]=useState(false)
+  const [isLoggedin, setisLoggedin] = useState(false);
 
   const title = "Food Villa";
   return (
@@ -23,14 +26,20 @@ const[isLoggedin,setisLoggedin]=useState(false)
       <h1>{title}</h1>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <Link to={"/"}>
+           <li> Home </li>
+          </Link>
+
+          <Link to={"about"}>
+            <li>About</li>
+          </Link>
+
+          <li><Link to={"contact"}>Contact</Link></li>
           <li>Cart</li>
         </ul>
       </div>
       <>
-        {(isLoggedin) ? (
+        {isLoggedin ? (
           <button
             className="login-btn"
             onClick={() => {
