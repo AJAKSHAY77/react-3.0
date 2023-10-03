@@ -1,15 +1,12 @@
 import RestaurantCard from "./RestaurantCard";
-
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimeer";
 import { Link } from "react-router-dom";
+import { RES_LIST } from "../Config.js"
+import { FilterData } from "../Utils/Helper";
+import useonoffInternet from "../Utils/ISoffline";
 
-function FilterData(searchText, allRestaurant) {
-  const filter = allRestaurant.filter((el) =>
-    el?.info?.name?.toLowerCase().includes(searchText.toLowerCase())
-  );
-  return filter;
-}
+
 
 const Body = () => {
   const [searchText, setsearchText] = useState("");
@@ -22,9 +19,7 @@ const Body = () => {
   }, []);
 
   const getallrestaurantlist = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(RES_LIST);
     const json = await data.json();
     console.log(json);
     setfilteredRestuarant(
@@ -43,6 +38,17 @@ const Body = () => {
   // if (filteredRestuarant.length===0) {
   //   return <h1>oops !! this is not availaible</h1>
   // }
+
+  const Internet = useonoffInternet();
+  if (!Internet) {
+    return (
+      <h1>No internet connection </h1>
+      
+    ); 
+     
+    
+  }
+
   return allRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
@@ -71,7 +77,7 @@ const Body = () => {
       <div className="Restaurantlist">
         {filteredRestuarant.map((el) => {
           return (
-            <Link key={el.info.id} to={"/restuarant/"+el.info.id}>
+            <Link className="link" key={el.info.id} to={"/restuarant/"+el.info.id}>
               <RestaurantCard {...el.info} />
             </Link>
           );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-
+import useonoffInternet from "../Utils/ISoffline";
+import Cart from "./Cart";
 
 const Title = () => {
   return (
@@ -19,6 +19,8 @@ const Header = () => {
   const [isLoggedin, setisLoggedin] = useState(false);
 
   const title = "Food Villa";
+
+  const Internet = useonoffInternet();
   return (
     <div className="header">
       <Title />
@@ -27,17 +29,29 @@ const Header = () => {
       <div className="nav-items">
         <ul>
           <Link to={"/"}>
-           <li> Home </li>
+            <li> Home </li>
           </Link>
 
           <Link to={"about"}>
             <li>About</li>
           </Link>
 
-          <li><Link to={"contact"}>Contact</Link></li>
-          <li>Cart</li>
+          <li>
+            <Link to={"contact"}>Contact</Link>
+          </li>
+          
+
+          <li>
+            <Link to={"instamart"}>Instamart</Link>
+          </li>
+          
+            <li onClick={() => {
+               console.log("hello");;
+            }}>Cart</li>
+          
         </ul>
       </div>
+      <h5>{Internet ? "on" : "off"}</h5>
       <>
         {isLoggedin ? (
           <button
