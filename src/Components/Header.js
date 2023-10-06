@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useonoffInternet from "../Utils/ISoffline";
 import Cart from "./Cart";
+import { useContext } from "react";
+import Usercontext from "../Utils/UserContext";
+import { useSelector } from "react-redux";
+
 
 const Title = () => {
   return (
@@ -17,8 +21,13 @@ const Title = () => {
 
 const Header = () => {
   const [isLoggedin, setisLoggedin] = useState(false);
+  const { code } = useContext(Usercontext);
+
 
   const title = "Food Villa";
+
+  const cartitems = useSelector(store => store.cart.item)
+  console.log(cartitems);
 
   const Internet = useonoffInternet();
   return (
@@ -26,7 +35,7 @@ const Header = () => {
       <Title />
 
       <h1>{title}</h1>
-      <div className="nav-items">
+      <div className="nav-items mt-5">
         <ul>
           <Link to={"/"}>
             <li> Home </li>
@@ -39,20 +48,18 @@ const Header = () => {
           <li>
             <Link to={"contact"}>Contact</Link>
           </li>
-          
 
           <li>
             <Link to={"instamart"}>Instamart</Link>
           </li>
-          
-            <li onClick={() => {
-               console.log("hello");;
-            }}>Cart</li>
-          
+
+          <li>Cart-{cartitems.length}</li>
         </ul>
       </div>
       <h5>{Internet ? "on" : "off"}</h5>
       <>
+        {/* this is for react context demo */}
+        {/* <h1 className="text-red-400">{code.name}</h1> */}
         {isLoggedin ? (
           <button
             className="login-btn"
