@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { RES_LIST } from "../Config.js"
 import { FilterData } from "../Utils/Helper";
 import useonoffInternet from "../Utils/ISoffline";
+import Internetimg from "./Internet";
 
 
 
@@ -42,8 +43,7 @@ const Body = () => {
   const Internet = useonoffInternet();
   if (!Internet) {
     return (
-      <h1>No internet connection </h1>
-      
+    <h1 className="text-center font-bold mt-60 h-screen w-screen text-3xl">No Internet connection !!</h1>
     ); 
      
     
