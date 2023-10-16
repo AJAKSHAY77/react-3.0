@@ -50,19 +50,22 @@ const Body = () => {
   }
 
   return allRestaurant.length === 0 ? (
-    <Shimmer />
+    <div className="ml-10">
+      
+      <Shimmer />
+    </div>
   ) : (
     <>
-      <div className="search-container">
-        <input
+      <div className="search-container ml-[607px]">
+        <input 
           type="text"
           placeholder="search"
           value={searchText}
           onChange={(e) => setsearchText(e.target.value)}
-          className="search-input"
+          className="search-input py-2 px-3 rounded-lg bg-slate-300"
         />
         <button
-          className="search-btn"
+          className="search-btn bg-black text-white py-2 px-2 rounded-lg ml-2"
           onClick={() => {
             const Data = FilterData(searchText, allRestaurant);
 
@@ -70,17 +73,19 @@ const Body = () => {
             console.log("filterdata = ", Data);
           }}
         >
-          search
+          Search
         </button>
       </div>
 
       <div className="Restaurantlist">
         {filteredRestuarant.map((el) => {
           return (
-            
-            <Link className="link" key={el.info.id} to={"/restuarant/"+el.info.id}>
+            <Link
+              className="link"
+              key={el.info.id}
+              to={"/restuarant/" + el.info.id}
+            >
               <RestaurantCard {...el.info} />
-             
             </Link>
           );
         })}

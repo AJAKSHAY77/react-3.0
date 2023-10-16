@@ -1,8 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux/es/hooks/useSelector'
+import Fooditems from './Foodotems'
 
 const Cart = () => {
+  const cartItems = useSelector((store)=>store.cart.item)
   return (
-    <div className='cart'>Cart</div>
+    <Fooditems {...cartItems[0]} />
   )
 }
 

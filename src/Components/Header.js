@@ -34,7 +34,7 @@ const Header = () => {
     <div className="header">
       <Title />
 
-      <h1>{title}</h1>
+      {/* <h1>{title}</h1> */}
       <div className="nav-items mt-5">
         <ul>
           <Link to={"/"}>
@@ -53,16 +53,18 @@ const Header = () => {
             <Link to={"instamart"}>Instamart</Link>
           </li>
 
-          <li>Cart-{cartitems.length}</li>
+          <Link to={"cart"}>
+            <li>Cart-{cartitems.length}</li>
+          </Link>
         </ul>
       </div>
-      <h5>{Internet ? "on" : "off"}</h5>
+      {/* <h5>{Internet ? "on" : "off"}</h5> */}
       <>
         {/* this is for react context demo */}
         {/* <h1 className="text-red-400">{code.name}</h1> */}
         {isLoggedin ? (
           <button
-            className="login-btn"
+            className="login-btn bg-green-500 font-bold h-10 mt-5 mr-3 p-4 py-2 rounded-lg text-black"
             onClick={() => {
               setisLoggedin(false);
             }}
@@ -71,7 +73,7 @@ const Header = () => {
           </button>
         ) : (
           <button
-            className="login-btn"
+            className="login-btn  bg-green-500 h-10 font-bold mt-5 mr-3 p-4 py-2  rounded-lg text-black"
             onClick={() => {
               setisLoggedin(true);
             }}

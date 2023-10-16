@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
-import Usercontext from '../Utils/UserContext'
+
 
 const Footer = () => {
-    const{code}=useContext(Usercontext)
+   
   return (
     <>
-      <div>Footer</div>
-          <div>{ code.name}</div>
+      <h1 className='text-center'>
+        "Copyright © 2023 MunchMate. Made with love ❤️. All rights reserved."
+      </h1>
     </>
   );
 }
