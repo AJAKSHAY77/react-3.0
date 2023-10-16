@@ -2,19 +2,16 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimeer";
 import { Link } from "react-router-dom";
-import { RES_LIST } from "../Config.js"
+import { RES_LIST } from "../Config.js";
 import { FilterData } from "../Utils/Helper";
 import useonoffInternet from "../Utils/ISoffline";
 import Internetimg from "./Internet";
 
-
-
 const Body = () => {
   const [searchText, setsearchText] = useState("");
-  const[allRestaurant,setallRestaurant]=useState([])
+  const [allRestaurant, setallRestaurant] = useState([]);
   const [filteredRestuarant, setfilteredRestuarant] = useState([]);
- 
- 
+
   useEffect(() => {
     getallrestaurantlist();
   }, []);
@@ -43,21 +40,20 @@ const Body = () => {
   const Internet = useonoffInternet();
   if (!Internet) {
     return (
-    <h1 className="text-center font-bold mt-60 h-screen w-screen text-3xl">No Internet connection !!</h1>
-    ); 
-     
-    
+      <h1 className="text-center font-bold mt-60 h-screen w-screen text-3xl">
+        No Internet connection !!
+      </h1>
+    );
   }
 
   return allRestaurant.length === 0 ? (
     <div className="ml-10">
-      
       <Shimmer />
     </div>
   ) : (
     <>
       <div className="search-container ml-[607px]">
-        <input 
+        <input
           type="text"
           placeholder="search"
           value={searchText}
@@ -95,4 +91,3 @@ const Body = () => {
 };
 
 export default Body;
-
